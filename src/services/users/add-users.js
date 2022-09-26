@@ -30,14 +30,14 @@ async function addUser(data) {
 
         const resp = await insertUser(data);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { addUser };

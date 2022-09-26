@@ -16,7 +16,7 @@ async function insertCart(object) {
         let isNew = true;
 
         const cart = await pullCart();
-        cart.forEach(el => {
+        cart.forEach((el) => {
             if (el.user_id === object.user && el.product_id === object.product) {
                 isNew = false;
             }
@@ -24,18 +24,16 @@ async function insertCart(object) {
 
         if (isNew === true) {
             newProduct.values = [];
-            for (let el in object) {
-                const item = object[el];
+            object.values(object).forEach((item) => {
                 newProduct.values.push(item);
-            }
+            });
 
             await pool.query(newProduct);
         } else {
             add.values = [];
-            for (let el in object) {
-                const item = object[el];
-                add.values.push(item);
-            }
+            object.values(object).forEach((item) => {
+                add.values.values.push(item);
+            });
 
             await pool.query(add);
         }

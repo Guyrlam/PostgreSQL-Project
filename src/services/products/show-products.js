@@ -15,9 +15,8 @@ async function listProducts() {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+    return status;
 }
 
 async function filterListASC(category, brand) {
@@ -30,9 +29,8 @@ async function filterListASC(category, brand) {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+    return status;
 }
 
 async function filterListDESC(category, brand) {
@@ -45,9 +43,8 @@ async function filterListDESC(category, brand) {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+    return status;
 }
 
 async function selectProduct(id) {
@@ -60,9 +57,8 @@ async function selectProduct(id) {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+    return status;
 }
 
 module.exports = { listProducts, filterListASC, filterListDESC, selectProduct };

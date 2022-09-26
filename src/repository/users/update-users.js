@@ -12,14 +12,14 @@ async function alterUser(object, id) {
         pullUser(id);
 
         alter.values = [];
+        const manipulate = object;
 
         const classe = await selectClass(object.class);
-        object.class = classe.id;
+        manipulate.class = classe.id;
 
-        for (let el in object) {
-            const item = object[el];
+        object.values(manipulate).forEach((item) => {
             alter.values.push(item);
-        }
+        });
 
         alter.values.push(id);
 

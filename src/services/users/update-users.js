@@ -32,14 +32,14 @@ async function updateUser(data, id) {
 
         const resp = await alterUser(data, id);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { updateUser };

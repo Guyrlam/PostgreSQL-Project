@@ -22,14 +22,14 @@ async function addCart(data) {
 
         const resp = await insertCart(data);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { addCart };

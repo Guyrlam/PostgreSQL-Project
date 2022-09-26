@@ -42,7 +42,7 @@ const prices = {
 };
 
 async function pullCart() {
-    resp = await pool.query(pull);
+    const resp = await pool.query(pull);
     return resp.rows;
 }
 
@@ -65,7 +65,7 @@ async function userCart(id) {
         const pricesList = await client.query(prices);
 
         let total = 0;
-        pricesList.rows.forEach(el => {
+        pricesList.rows.forEach((el) => {
             total += el.price * Number(el.amount);
         });
         const cart = {
@@ -75,11 +75,12 @@ async function userCart(id) {
         };
 
         status.message = cart;
-    } catch (error) {
-        status.Error = error.message;
-    } finally {
         client.release();
         return status;
+    } catch (error) {
+        status.Error = error.message;
+        client.release();
+        throw status;
     }
 }
 

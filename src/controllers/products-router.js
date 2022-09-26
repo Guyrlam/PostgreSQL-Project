@@ -11,7 +11,7 @@ const {
 
 const productsRoute = Router();
 
-productsRoute.post('/', async function (req, res) {
+productsRoute.post('/', async (req, res) => {
     const service = await addProduct(req.body);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -24,7 +24,7 @@ productsRoute.post('/', async function (req, res) {
     }
 });
 
-productsRoute.put('/:id', async function (req, res) {
+productsRoute.put('/:id', async (req, res) => {
     const service = await updateProduct(req.body, req.params.id);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -37,7 +37,7 @@ productsRoute.put('/:id', async function (req, res) {
     }
 });
 
-productsRoute.get('/:id', async function (req, res) {
+productsRoute.get('/:id', async (req, res) => {
     const service = await selectProduct(req.params.id);
     if (service.Error != null) {
         const message = {
@@ -49,7 +49,7 @@ productsRoute.get('/:id', async function (req, res) {
     }
 });
 
-productsRoute.delete('/:id', async function (req, res) {
+productsRoute.delete('/:id', async (req, res) => {
     const service = await deleteProduct(req.params.id);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -62,7 +62,7 @@ productsRoute.delete('/:id', async function (req, res) {
     }
 });
 
-productsRoute.get('/', async function (req, res) {
+productsRoute.get('/', async (req, res) => {
     const service = await listProducts();
     if (service.Error != null) {
         const message = {
@@ -74,7 +74,7 @@ productsRoute.get('/', async function (req, res) {
     }
 });
 
-productsRoute.get('/filterASC/:category/:brand', async function (req, res) {
+productsRoute.get('/filterASC/:category/:brand', async (req, res) => {
     const service = await filterListASC(req.params.category, req.params.brand);
     if (service.Error != null) {
         const message = {
@@ -86,7 +86,7 @@ productsRoute.get('/filterASC/:category/:brand', async function (req, res) {
     }
 });
 
-productsRoute.get('/filterDESC/:category/:brand', async function (req, res) {
+productsRoute.get('/filterDESC/:category/:brand', async (req, res) => {
     const service = await filterListDESC(req.params.category, req.params.brand);
     if (service.Error != null) {
         const message = {

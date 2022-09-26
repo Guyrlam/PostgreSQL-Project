@@ -12,14 +12,14 @@ async function deleteProduct(id) {
 
         const resp = await delProduct(id);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { deleteProduct };

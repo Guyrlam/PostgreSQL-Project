@@ -30,14 +30,14 @@ async function addProduct(data) {
 
         const resp = await insertProduct(data);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { addProduct };

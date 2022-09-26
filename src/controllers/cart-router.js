@@ -5,7 +5,7 @@ const { deleteItem } = require('../services/cart/delete-cart');
 
 const cartRoute = Router();
 
-cartRoute.post('/', async function (req, res) {
+cartRoute.post('/', async (req, res) => {
     const service = await addCart(req.body);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -18,7 +18,7 @@ cartRoute.post('/', async function (req, res) {
     }
 });
 
-cartRoute.get('/:id', async function (req, res) {
+cartRoute.get('/:id', async (req, res) => {
     const service = await listCart(req.params.id);
     if (service.Error != null) {
         const message = {
@@ -30,7 +30,7 @@ cartRoute.get('/:id', async function (req, res) {
     }
 });
 
-cartRoute.delete('/:user/:product', async function (req, res) {
+cartRoute.delete('/:user/:product', async (req, res) => {
     const service = await deleteItem(req.params.user, req.params.product);
     if (service.Error != null) {
         res.status(400).json(service);

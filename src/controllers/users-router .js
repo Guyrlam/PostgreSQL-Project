@@ -11,7 +11,7 @@ const {
 
 const usersRoute = Router();
 
-usersRoute.post('/', async function (req, res) {
+usersRoute.post('/', async (req, res) => {
     const service = await addUser(req.body);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -24,7 +24,7 @@ usersRoute.post('/', async function (req, res) {
     }
 });
 
-usersRoute.put('/:id', async function (req, res) {
+usersRoute.put('/:id', async (req, res) => {
     const service = await updateUser(req.body, req.params.id);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -37,7 +37,7 @@ usersRoute.put('/:id', async function (req, res) {
     }
 });
 
-usersRoute.get('/:id', async function (req, res) {
+usersRoute.get('/:id', async (req, res) => {
     const service = await selectUser(req.params.id);
     if (service.Error != null) {
         const message = {
@@ -49,8 +49,7 @@ usersRoute.get('/:id', async function (req, res) {
     }
 });
 
-usersRoute.delete('/:id', async function (req, res) {
-    console.log('teste');
+usersRoute.delete('/:id', async (req, res) => {
     const service = await deleteUser(req.params.id);
     if (service.Error != null) {
         res.status(400).json(service);
@@ -63,7 +62,7 @@ usersRoute.delete('/:id', async function (req, res) {
     }
 });
 
-usersRoute.get('/', async function (req, res) {
+usersRoute.get('/', async (req, res) => {
     const service = await listUsers();
     if (service.Error != null) {
         const message = {
@@ -75,7 +74,7 @@ usersRoute.get('/', async function (req, res) {
     }
 });
 
-usersRoute.get('/filterASC/:category/:brand', async function (req, res) {
+usersRoute.get('/filterASC/:category/:brand', async (req, res) => {
     const service = await filterUsersASC(req.params.category, req.params.brand);
     if (service.Error != null) {
         const message = {
@@ -87,7 +86,7 @@ usersRoute.get('/filterASC/:category/:brand', async function (req, res) {
     }
 });
 
-usersRoute.get('/filterDESC/:category/:brand', async function (req, res) {
+usersRoute.get('/filterDESC/:category/:brand', async (req, res) => {
     const service = await filterUsersDESC(req.params.category, req.params.brand);
     if (service.Error != null) {
         const message = {

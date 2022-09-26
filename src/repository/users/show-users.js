@@ -35,7 +35,7 @@ const unity = {
 };
 
 async function pullUserList() {
-    resp = await pool.query(pull);
+    const resp = await pool.query(pull);
     return resp.rows;
 }
 

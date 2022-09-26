@@ -8,14 +8,14 @@ async function deleteItem(user, product) {
     try {
         const resp = await delCart(user, product);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { deleteItem };

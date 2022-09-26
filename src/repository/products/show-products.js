@@ -79,7 +79,7 @@ const filterDESC = {
 };
 
 async function pullProducts() {
-    resp = await pool.query(pull);
+    const resp = await pool.query(pull);
     return resp.rows;
 }
 
@@ -89,7 +89,7 @@ async function pullUnity(id) {
     const selected = await pool.query(unity);
 
     if (selected.rows[0].deleted_at != null) {
-        throw new Error("O produto informado não foi encontrado.");
+        throw new Error('O produto informado não foi encontrado.');
     }
 
     return selected.rows[0];

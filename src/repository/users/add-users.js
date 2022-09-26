@@ -8,15 +8,15 @@ const newUser = {
 
 async function insertUser(object) {
     try {
+        const manipulate = object;
         newUser.values = [];
 
         const classe = await selectClass(object.class);
-        object.class = classe.id;
+        manipulate.class = classe.id;
 
-        for (let el in object) {
-            const item = object[el];
+        object.values(manipulate).forEach((item) => {
             newUser.values.push(item);
-        }
+        });
 
         await pool.query(newUser);
 

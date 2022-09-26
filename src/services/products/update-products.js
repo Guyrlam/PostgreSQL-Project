@@ -32,14 +32,14 @@ async function updateProduct(data, id) {
 
         const resp = await alterProduct(data, id);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { updateProduct };

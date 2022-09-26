@@ -10,9 +10,9 @@ async function listUsers() {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 async function selectUser(id) {
@@ -25,9 +25,9 @@ async function selectUser(id) {
         status.message = resp;
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { listUsers, selectUser };

@@ -12,14 +12,14 @@ async function deleteUser(id) {
 
         const resp = await delUser(id);
 
-        if (resp != true) {
+        if (resp !== true) {
             throw resp;
         }
     } catch (error) {
         status.Error = error.message;
-    } finally {
-        return status;
     }
+
+    return status;
 }
 
 module.exports = { deleteUser };

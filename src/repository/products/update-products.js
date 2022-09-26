@@ -10,20 +10,20 @@ const alter = {
 
 async function alterProduct(object, id) {
     try {
+        const manipulate = object;
         pullUnity(id);
 
         alter.values = [];
 
         const category = await selectCategory(object.category);
-        object.category = category.id;
+        manipulate.category = category.id;
 
         const brand = await selectBrand(object.brand);
-        object.brand = brand.id;
+        manipulate.brand = brand.id;
 
-        for (let el in object) {
-            const item = object[el];
+        object.values(manipulate).forEach((item) => {
             alter.values.push(item);
-        }
+        });
 
         alter.values.push(id);
 

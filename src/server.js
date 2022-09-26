@@ -7,7 +7,7 @@ const { usersRoute } = require('./controllers/users-router ');
 const { cartRoute } = require('./controllers/cart-router');
 
 const app = express();
-const PORT = process.env.PORT;
+const { PORT } = process.env;
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -18,6 +18,7 @@ app.use('/users', usersRoute);
 app.use('/cart', cartRoute);
 
 app.listen(PORT, () => {
+    // eslint-disable-next-line no-console
     console.log(`Server started at http://localhost:${PORT}`);
 });
 

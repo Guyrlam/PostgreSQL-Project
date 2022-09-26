@@ -9,18 +9,18 @@ const newProduct = {
 
 async function insertProduct(object) {
     try {
+        const manipulate = object;
         newProduct.values = [];
 
         const category = await selectCategory(object.category);
-        object.category = category.id;
+        manipulate.category = category.id;
 
-        const brand = await selectBrand(object.brand);
-        object.brand = brand.id;
+        const brand = await selectBrand(manipulate.brand);
+        manipulate.brand = brand.id;
 
-        for (let el in object) {
-            const item = object[el];
+        object.values(manipulate).forEach((item) => {
             newProduct.values.push(item);
-        }
+        });
 
         await pool.query(newProduct);
 
