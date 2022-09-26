@@ -28,6 +28,8 @@ async function insertProduct(object) {
     } catch (error) {
         return error;
     }
+
+    
 }
 
 module.exports = { insertProduct };
