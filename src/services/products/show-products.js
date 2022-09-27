@@ -61,4 +61,9 @@ async function selectProduct(id) {
     return status;
 }
 
-module.exports = { listProducts, filterListASC, filterListDESC, selectProduct };
+module.exports = {
+    listProducts,
+    filterListASC,
+    filterListDESC,
+    selectProduct,
+};

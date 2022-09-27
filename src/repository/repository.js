@@ -12,4 +12,16 @@ const pool = new Pool({
     connectionTimeoutMillis: 2000,
 });
 
-module.exports = { pool };
+async function begin(client) {
+    await client.query('BEGIN');
+}
+
+async function commit(client) {
+    await client.query('COMMIT');
+}
+
+async function rollback(client) {
+    await client.query('ROLLBACK');
+}
+
+module.exports = { pool, begin, commit, rollback };

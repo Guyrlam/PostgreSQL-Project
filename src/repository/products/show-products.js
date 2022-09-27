@@ -1,5 +1,9 @@
 const { pool } = require('../repository');
 
+const array = [1, 2, 3, 4, 45];
+
+array.at(1);
+
 const pull = {
     text: `SELECT 
     products.id, 

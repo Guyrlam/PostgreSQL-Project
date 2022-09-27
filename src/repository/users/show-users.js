@@ -7,7 +7,7 @@ const pull = {
     users.name,
     users.email, 
     users.password,
-	users.phone,
+    users.phone,
     users.created_at, 
     users.updated_at
     FROM users 
@@ -23,7 +23,7 @@ const unity = {
     users.name,
     users.email, 
     users.password,
-	users.phone,
+    users.phone,
     users.created_at, 
     users.updated_at,
     users.deleted_at

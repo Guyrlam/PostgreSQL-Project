@@ -60,6 +60,8 @@ async function userCart(id) {
         amount.values = [id];
         prices.values = [id];
 
+        await client.query('BEGIN');
+
         const selected = await client.query(cartUser);
         const totalAmount = await client.query(amount);
         const pricesList = await client.query(prices);
@@ -75,13 +77,15 @@ async function userCart(id) {
         };
 
         status.message = cart;
-        client.release();
-        return status;
+
+        await client.query('COMMIT');
     } catch (error) {
+        await client.query('ROLLBACK');
         status.Error = error.message;
-        client.release();
-        throw status;
     }
+
+    client.release();
+    return status;
 }
 
 module.exports = {
